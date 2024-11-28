@@ -15,8 +15,5 @@ export class AuthController {
   async Login(@Body() logindtos: LoginDtos){
     return await this.authService.Login(logindtos)
   }
-
-
-
   }
 

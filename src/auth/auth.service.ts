@@ -70,7 +70,7 @@ export class AuthService {
     async tokenGenrator(payload): Promise<string>{
         const secret = process.env.JWT_SECRET;
         const expiresIn="1d"
-        let secretKey = `${secret}${payload.id}`
+        let secretKey = `${secret}`
         let token = await this.jwtService.signAsync(payload, { secret: secretKey, expiresIn });
         return token
     } 
