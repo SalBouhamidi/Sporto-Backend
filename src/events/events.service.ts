@@ -27,7 +27,6 @@ export class EventsService {
                 date: createeventDtos.date,
                 description: createeventDtos.description
             });
-
             if (checkExistingEvent) {
                 return "An event with the same info and date already exists";
             }
@@ -43,7 +42,6 @@ export class EventsService {
                 owner: createeventDtos.owner,
                 participants: createeventDtos.participants
             }
-            // console.log("here's my response :", respone)
             return respone;
         } catch (e) {
             console.log("an errror", e);
@@ -85,9 +83,9 @@ export class EventsService {
             );
             
             if (!updatedEvent) {
-                return "Ops wronf";
+                return "Ops teh event does not update";
             }
-            console.log(typeof updatedEvent.date)
+            // console.log(typeof updatedEvent.date)
             const response: responseupdateEventDtos = {
                 name: updatedEvent.name,
                 description: updatedEvent.description,
@@ -123,9 +121,9 @@ export class EventsService {
         }
     }
 
-    async showEvent(eventId: string): Promise<Event | string> {
+    async showEvent(eventId: string){
         try {
-            let event = await this.eventmodel.findById(eventId);
+            let event = (await this.eventmodel.findById(eventId)).populate('participants');
             if (!event) {
                 return "the event does not exist"
             }
@@ -135,6 +133,20 @@ export class EventsService {
             return "smth happend wrong try again"
         }
 
+    }
+
+
+    async getAllMyEvent(ownerId: string){
+        try{
+            let result = await this.eventmodel.find({owner: ownerId});
+            if(!result){
+                return "there's no events yet"
+            }
+            return result
+        }catch(e){
+            console.log(e);
+            return "Ops something happend Wrong Kindly try again"
+        }
     }
 
 

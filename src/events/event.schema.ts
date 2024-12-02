@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongodb";
-import { User } from "src/users/user.schema";
+import { Participant } from "src/participents/participents.schema"
+import {User} from "src/users/user.schema"
 import * as mongoose from 'mongoose';
 
 export type EventDocument = Event & Document;
@@ -19,7 +20,8 @@ export class Event{
     @Prop({required:true, type: Date})
     date: Date;
 
-    @Prop({type: [{type : mongoose.Schema.Types.ObjectId, ref:'User'}]})
-    participants: User[];
+    @Prop({type: [{type : mongoose.Schema.Types.ObjectId, ref:'Participant'}]})
+    participants: mongoose.Types.ObjectId[];;
+    
 }
 export const EventSchema = SchemaFactory.createForClass(Event)

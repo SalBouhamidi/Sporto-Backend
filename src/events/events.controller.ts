@@ -13,7 +13,7 @@ export class EventsController {
         let token = req.headers['authorization'];
         let isOwner = validateJwt(token);
         const userId = isOwner.id;
-        // console.log(userId);
+        console.log(createEventDtos);
         return await this.eventsService.CreateEvent(userId, createEventDtos);
     }
 
@@ -58,6 +58,18 @@ export class EventsController {
         } catch (e) {
             console.log(e)
             return "ops smth is wrong"
+        }
+    }
+    @Get()
+    async getMyEvent(@Req() req){
+        try{
+            let token = req.headers['authorization'];
+            let isOwner = validateJwt(token);
+            const ownerId = isOwner.id;
+            return await this.eventsService.getAllMyEvent(ownerId)
+        }catch(e){
+            console.log(e);
+            return 'Not able to return events smth bad happend'
         }
     }
 
