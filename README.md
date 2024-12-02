@@ -1,99 +1,165 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Sporto - Application de Gestion d'Événements Sportifs
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Une organisation sportive souhaite mettre en place une application pour gérer les inscriptions à ses événements. Cette application permettra à l’organisateur de gérer les événements et les participants, tout en simplifiant le processus d'inscription.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## **Fonctionnalités**
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### **Organisateur peut :**
+- **Gérer les événements sportifs :** Création, modification, et suppression.
+- **Gérer les inscriptions aux événements :** Création et modification des informations pour chaque participant.
+- **Générer et imprimer une liste des inscrits :** Liste complète des participants pour chaque événement.
 
-## Project setup
+---
+## **API Documentation **:
+https://documenter.getpostman.com/view/33158402/2sAYBYfqJw
 
-```bash
-$ npm install
-```
+## **Architecture du Projet**
+Modular Architecture of Nest js .
+|_node_modules
+|_src
+  |_auth
+    |_DTOs
+    |_auth.controller.spec.ts
+    |_auth.controller.ts
+    |_auth.module.ts
+    |_auth.service.spec.ts
+    |_auth.service.ts
+  |_events
+    |_DTOs
+    |_event.controller.spec.ts
+    |_event.controller.ts
+    |_event.module.ts
+    |_event.service.spec.ts
+    |_event.service.ts
+    |_event.schema.ts
+  |_Participents
+    |_DTOs
+    |participents.controller.spec.ts
+    |participents.controller.ts
+    |participents.module.ts
+    |participents.service.spec.ts
+    |participents.service.ts
+    |participents.schema.ts
+  |_Users
+    |_DTOs
+    |_user.controller.spec.ts
+    |_user.controller.ts
+    |_user.module.ts
+    |_user.service.spec.ts
+    |_user.service.ts
+    |_user.schema.ts
+  |_utils
+    |_BcyptingPassword.ts
+    |_checkPassword.ts
+    |_validateJWT.ts
+  |_app.controller.spec.ts
+  |_app.controller.ts
+  |_app.module.ts
+  |_app.service.ts
+  |_main.ts
+  |_Test
+    |_app.e2e-spec.ts
+    |_jest-e2e.json
+  |_.dockerignore
+  |_.env
+  |_.eslintrc.js
+  |_.gitignore
+  |_dockerfile
+  |_nest-cli.json
+  |_package.json
+  |_package-lock.json
+  |_tsconfig.build.json
+  |_tsconfig.json
+  |_README.md
 
-## Compile and run the project
+### **Back-end**
+- **Technologies :** Node.js, NestJS, MongoDB.
+- **ODM :** Mongoose.
+- **Tests unitaires :** Implémentés pour chaque contrôleur.
+- **Middleware :** 
+  - Gestion des erreurs.
+  - Authentification et sécurité avec JWT.
+- **Protection des routes sensibles :** Système d'autorisation basé sur les rôles.
 
-```bash
-# development
-$ npm run start
+### **Front-end**
+- **Framework :** React.js.
+- **Gestion des routes :** 
+  - Protection des routes sensibles contre l'accès non autorisé.
 
-# watch mode
-$ npm run start:dev
+### **Déploiement**
+- **Docker :** 
+  - Génération d'images Docker pour le Back-end et le Front-end.
+  - Création d'un réseau Docker pour connecter les deux.
+  
+---
 
-# production mode
-$ npm run start:prod
-```
+## **Configuration du Projet**
 
-## Run tests
+### **Scripts Utiles**
+- **Lancer l'application :**
+  - `npm run start:dev` : Démarre l'application en mode développement.
+  - `npm run start:prod` : Démarre l'application en mode production.
+- **Tests :**
+  - `npm run test` : Exécute les tests unitaires.
+  - `npm run test:watch` : Exécute les tests en mode surveillance.
+  - `npm run test:cov` : Génére un rapport de couverture des tests.
+- **Linting :**
+  - `npm run lint` : Analyse le code et corrige les erreurs de style.
+- **Compilation :**
+  - `npm run build` : Compile l'application pour la production.
 
-```bash
-# unit tests
-$ npm run test
+### **Dépendances Principales**
+- **Authentification et sécurité :**
+  - `@nestjs/jwt`, `jsonwebtoken`, `bcrypt`.
+- **Validation et transformation :**
+  - `class-validator`, `class-transformer`.
+- **Base de données :**
+  - `mongoose`, `@nestjs/mongoose`.
+- **Test :**
+  - `jest`, `supertest`, `ts-jest`.
 
-# e2e tests
-$ npm run test:e2e
+---
 
-# test coverage
-$ npm run test:cov
-```
+## **Instructions d'Installation**
 
-## Deployment
+1. **Cloner le dépôt :**
+   git clone https://github.com/SalBouhamidi/Sporto-Backend.git
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+2. **Installer les dépendances:**
+npm install
 
-```bash
-$ npm install -g mau
-$ mau deploy
-```
+3. **Configurer les variables d'environnement:**
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+PORT=3000
+MONGODB_URI=your_mongo_uri
+JWT_SECRET=your_secret_key
 
-## Resources
+3. **Démarrer l'application:**
 
-Check out a few resources that may come in handy when working with NestJS:
+npm run start:dev
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+4. **Exécuter les tests :**
 
-## Support
+npm run test
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Créer une image Docker pour le Back-end :
+docker build -t userName/docker-img-spoto-backend:latest .
+### Créer une image Docker pour le Front-end :
+docker build -t username/frontend-app .
+### Pour savoir plus sur Docker compose visiter le repo:
+https://github.com/SalBouhamidi/sportoDocker.git
 
-## Stay in touch
+Made With Love by Salima BOUHAMIDI.
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
-## License
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+
+
+
+
+
+
