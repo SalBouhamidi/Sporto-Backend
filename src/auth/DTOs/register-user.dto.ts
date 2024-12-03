@@ -18,8 +18,8 @@ email:string
 password: string
 
 @IsOptional()
-@MinLength(2, {message:"The organisation name is super short"})
-@MaxLength(10, {message:"The organisation name is too lolng"})
+@MinLength(3, {message:"The organisation name is super short"})
+@MaxLength(30, {message:"The organisation name is too lolng"})
 @IsString({message: "the name of the organisation must be string"})
 organisationName:string
 

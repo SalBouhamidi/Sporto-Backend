@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { EventsModule } from './events/events.module';
+import { ParticipentsModule } from './participents/participents.module';
 
 
 @Module({
@@ -15,7 +16,8 @@ import { EventsModule } from './events/events.module';
     MongooseModule.forRoot(process.env.MONGO_URI),
     UsersModule,
     AuthModule,
-    EventsModule
+    EventsModule,
+    ParticipentsModule
   ],
 })
 export class AppModule { }
