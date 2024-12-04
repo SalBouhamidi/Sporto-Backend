@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongodb";
 import { Participant } from "src/participents/participents.schema"
-import {User} from "src/users/user.schema"
+import {User} from "../users/user.schema"
 import * as mongoose from 'mongoose';
 
 export type EventDocument = Event & Document;
