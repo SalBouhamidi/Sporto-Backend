@@ -78,9 +78,6 @@ Modular Architecture of Nest js .
 - **Technologies :** Node.js, NestJS, MongoDB.
 - **ODM :** Mongoose.
 - **Tests unitaires :** Implémentés pour chaque contrôleur.
-- **Middleware :** 
-  - Gestion des erreurs.
-  - Authentification et sécurité avec JWT.
 - **Protection des routes sensibles :** Système d'autorisation basé sur les rôles.
 
 ### **Front-end**
