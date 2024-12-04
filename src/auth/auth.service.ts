@@ -17,8 +17,7 @@ import { validateJwt } from "../utils/validateJWT"
 export class AuthService {
     constructor(
         private readonly jwtService: JwtService,
-        @InjectModel(User.name) private userModel: Model<UserDocument>,
-
+        @InjectModel(User.name) private userModel: Model<User>,
     ) { }
     async Register(registerDtos: RegisterDtos): Promise<ResponseUser | string> {
         try {
@@ -37,7 +36,7 @@ export class AuthService {
             }
         } catch (e) {
             console.log('a problem is catched', e);
-            return "There's an error please try again"
+            return `There's an error please try again ${e}`
         }
     }
     async Login(loginDtos: LoginDtos): Promise<ResponseLoginUser | string> {

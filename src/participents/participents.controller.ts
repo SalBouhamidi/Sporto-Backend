@@ -23,8 +23,8 @@ export class ParticipentsController {
             return "Ops the participant wasns't added smth went wrong" 
         }
     }
-    @Put(':eventId')
-    async updateParticipant(@Param('eventId') eventId:string,@Query('participantId')participantId:string , userId: string, @Body() updateParticipantdtos : UpdateParticipantDtos, @Req() req){
+    @Put(':eventId/:participantId')
+    async updateParticipant(@Param('eventId') eventId:string,@Param('participantId') participantId:string , userId: string, @Body() updateParticipantdtos : UpdateParticipantDtos, @Req() req){
         try{
             let token = req.headers['authorization'];
             let isAuthentificator = validateJwt(token);
@@ -70,7 +70,7 @@ export class ParticipentsController {
 
         }catch(e){
             console.log(e);
-            return 'ops smth went wrong in delete participant'
+            return 'ops smth went wrong in list participant'
         }
     }
 
